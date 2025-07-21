@@ -47,7 +47,7 @@ export default function Trending() {
                 <TrendingSkeleton startRank={1} />
               ) : (
                 trendingNFTs.slice(0, 5).map((trendingNFT, index) => (
-                  <div className="trending-column__body">
+                  <div className="trending-column__body" key={index}>
                     <Link
                       to={`/collection/${trendingNFT.collectionId}`}
                       key={index}
@@ -93,7 +93,7 @@ export default function Trending() {
                 <TrendingSkeleton startRank={6} />
               ) : (
                 trendingNFTs.slice(5, 10).map((trendingNFT, index) => (
-                  <div className="trending-column__body">
+                  <div className="trending-column__body" key={index}>
                     <Link
                       to={`/collection/${trendingNFT.collectionId}`}
                       key={index}

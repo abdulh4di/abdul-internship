@@ -1869,3 +1869,21 @@ USER PAGE
     width: calc((100% / 1) - 16px + (16px / 1));
   }
 }
+
+.swiper-button-prev,
+.swiper-button-next{
+  height: 44px;
+    width: 44px;
+    border-radius: 9999px;
+    background: white;
+    border: 1px #cccccc solid;
+    z-index: 20;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after
+{
+  font-size: 20px;
+  color: black
+}
+
