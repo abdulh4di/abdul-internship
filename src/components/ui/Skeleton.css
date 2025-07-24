@@ -20,34 +20,50 @@
     hsla(0, 0%, 100%, 0)
   );
   animation: shimmer 2s infinite;
-  transform: translateX(-100%)
+  transform: translateX(-100%);
 }
 
-@keyframes shimmer{
-  100%{
-        transform: translateX(100%)
-    }
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
 }
 
-.skeleton-selected-collection-bg{
+.skeleton-selected-collection-bg {
   width: 100%;
   height: 100%;
 }
 
-.skeleton-collection__img{
+.skeleton-trending-collection__img {
   width: 100%;
-  height: 100%
+  height: 100%;
 }
 
-.skeleton__name{
+.skeleton__name {
   width: 150px;
   height: 18px;
   border-radius: 2px;
 }
 
-.skeleton__price{
-width: 80px;
-height: 18px;
-border-radius: 2px;
+.skeleton__price {
+  width: 80px;
+  height: 18px;
+  border-radius: 2px;
 }
 
+.skeleton-collection-img {
+  width: 100%;
+  height: 180px;
+}
+
+.skeleton__stat__label {
+  width: 48px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.skeleton__stat__data {
+  width: 80%;
+  height: 16px;
+  border-radius: 4px;
+}
