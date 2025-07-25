@@ -1871,19 +1871,17 @@ USER PAGE
 }
 
 .swiper-button-prev,
-.swiper-button-next{
+.swiper-button-next {
   height: 44px;
-    width: 44px;
-    border-radius: 9999px;
-    background: white;
-    border: 1px #cccccc solid;
-    z-index: 20;
+  width: 44px;
+  border-radius: 9999px;
+  background: white;
+  border: 1px #cccccc solid;
+  z-index: 20;
 }
 
 .swiper-button-prev:after,
-.swiper-button-next:after
-{
+.swiper-button-next:after {
   font-size: 20px;
-  color: black
+  color: black;
 }
-
