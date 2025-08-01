@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from "react";
 import VerifiedIcon from "../../assets/verified.png";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import TrendingSkeleton from "../ui/TrendingSkeleton";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function Trending() {
-  const [trendingNFTs, setTrendingNFTs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  async function fetchTrendingNFT() {
-    setLoading(true);
-    const { data } = await axios.get(
-      "https://remote-internship-api-production.up.railway.app/trendingNFTs"
-    );
-
-    const NFT = data.data;
-
-    setTrendingNFTs(NFT);
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    fetchTrendingNFT();
-  }, []);
+  const { trendingNFTs, loading } = useContext(AppContext);
 
   return (
     <section id="trending">

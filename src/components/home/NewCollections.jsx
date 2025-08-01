@@ -1,31 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/less/navigation";
 import { Navigation } from "swiper/modules";
-import NewCollectionsSkeleton from "../ui/NewCollectionsSkeleton";
+import { AppContext } from "../../context/AppContext";
+import CollectionsSkeleton from "../ui/CollectionsSkeleton";
 
 export default function NewCollections() {
-  const [newCollections, setNewCollections] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { newCollections, loading } = useContext(AppContext);
 
-  async function fetchNewCollections() {
-    setLoading(true);
-    const { data } = await axios.get(
-      "https://remote-internship-api-production.up.railway.app/newCollections"
-    );
-
-    const collections = data.data;
-
-    setNewCollections(collections);
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    fetchNewCollections();
-  }, []);
   return (
     <section id="new-collections">
       <div className="container">
@@ -51,7 +35,7 @@ export default function NewCollections() {
               {loading
                 ? new Array(7).fill(0).map((_, index) => (
                     <SwiperSlide key={index}>
-                      <NewCollectionsSkeleton />
+                      <CollectionsSkeleton />
                     </SwiperSlide>
                   ))
                 : newCollections.map((newCollection, index) => (

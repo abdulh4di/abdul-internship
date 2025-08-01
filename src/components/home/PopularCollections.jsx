@@ -1,29 +1,13 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
-import PopularSkeleton from "../ui/PopularSkeleton";
+import { AppContext } from "../../context/AppContext";
+import CollectionsSkeleton from "../ui/CollectionsSkeleton";
 
 export default function PopularCollections() {
-  const [popularCollections, setPopularCollection] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  async function fetchPopularCollections() {
-    setLoading(true);
-    const { data } = await axios.get(
-      "https://remote-internship-api-production.up.railway.app/popularCollections"
-    );
-    const collections = data.data;
-
-    setPopularCollection(collections);
-    setLoading(false);
-  }
-
-  useEffect(() => {
-    fetchPopularCollections();
-  }, []);
+  const { popularCollections, loading } = useContext(AppContext);
 
   return (
     <section id="popular-collections">
@@ -48,8 +32,8 @@ export default function PopularCollections() {
             >
               {loading
                 ? new Array(7).fill(0).map((_, index) => (
-                    <SwiperSlide>
-                      <PopularSkeleton />
+                    <SwiperSlide key={index}>
+                      <CollectionsSkeleton />
                     </SwiperSlide>
                   ))
                 : popularCollections.map((popularCollection, index) => (
