@@ -1,7 +1,6 @@
-import React from "react";
 import "./Skeleton.css";
 
-const PopularSkeleton = () => {
+const CollectionsSkeleton = () => {
   return (
     <>
       <div className="collection">
@@ -34,4 +33,4 @@ const PopularSkeleton = () => {
   );
 };
 
-export default PopularSkeleton;
+export default CollectionsSkeleton;
