@@ -21,10 +21,10 @@ export default function CollectionsPage() {
         <h1 className="collections-page__title">Collections</h1>
         <div className="collections__body">
           {loading
-            ? new Array(12).fill(0).map((_, index) => <CollectionsPageSkeleton />)
+            ? new Array(12).fill(0).map((_, index) => <CollectionsPageSkeleton key ={index} />)
             : collections.slice(0, collectionPerPage).map((collection, index) => (
                 <div className="collection-column" key={index}>
-                  <Link to={`collection/${collection.id}`} className="collection">
+                  <Link to={`/collection/${collection.id}`} key={index} className="collection">
                     <img src={collection.imageLink} alt="" className="collection__img" />
                     <div className="collection__info">
                       <h3 className="collection__name">{collection.title}</h3>
