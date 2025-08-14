@@ -1,58 +1,111 @@
 import { faShoppingBag, faTableCells } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Navigation } from "swiper/modules";
+import RecommendedIHeaderSkeleton from "../ui/RecommendedIHeaderSkeleton";
+import RecommendedItemSkeleton from "../ui/RecommendedItemSkeleton";
+import RecommendedFooterSkeleton from "../ui/RecommendedFooterSkeleton";
 
-export default function RecommendedItems() {
+export default function RecommendedItems({ collectionId, currentItemId }) {
+  const [recommendedItemsInfo, setRecommendedItemsInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  async function fetchRecommendedInfo() {
+    setLoading(true);
+    const { data } = await axios.get(
+      `https://remote-internship-api-production.up.railway.app/collection/${collectionId}`
+    );
+    setRecommendedItemsInfo(data.data.items);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    if (!collectionId) return;
+    fetchRecommendedInfo();
+  }, [collectionId]);
+
+  const filteredItems = recommendedItemsInfo.filter((item) => item.itemId !== currentItemId);
+
   return (
     <section id="recommended-items">
       <div className="container">
         <div className="row recommended-items__row">
           <div className="recommended-items__wrapper">
-            <div className="recommended-items__header">
-              <FontAwesomeIcon icon={faTableCells} />
-              <h3 className="recommended-items__header__title">
-                More from this collection
-              </h3>
-            </div>
+            {loading ? (
+              <RecommendedIHeaderSkeleton />
+            ) : (
+              <div className="recommended-items__header">
+                <FontAwesomeIcon icon={faTableCells} />
+                <h3 className="recommended-items__header__title">More from this collection</h3>
+              </div>
+            )}
+
             <div className="recommended-items__body">
-              {new Array(6).fill(0).map((_, index) => (
-                <div className="item-column">
-                  <Link to={"/item"} key={index} className="item">
-                    <figure className="item__img__wrapper">
-                      <img
-                        src="https://i.seadn.io/gcs/files/0a085499e0f3800321618af356c5d36b.png?auto=format&dpr=1&w=384"
-                        alt=""
-                        className="item__img"
-                      />
-                    </figure>
-                    <div className="item__details">
-                      <span className="item__details__name">Meebit #0001</span>
-                      <span className="item__details__price">0.98 ETH</span>
-                      <span className="item__details__last-sale">
-                        Last sale: 7.45 ETH
-                      </span>
-                    </div>
-                    <div className="item__see-more">
-                      <button className="item__see-more__button">
-                        See More
-                      </button>
-                      <div className="item__see-more__icon">
-                        <FontAwesomeIcon icon={faShoppingBag} />
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </div>
-            <div className="recommended-items__footer">
-              <Link
-                to={"/collection"}
-                className="recommended-items__footer__button"
+              <Swiper
+                spaceBetween={16}
+                loop
+                navigation
+                modules={[Navigation]}
+                breakpoints={{
+                  0: { slidesPerView: 1 },
+                  480: { slidesPerView: 2 },
+                  768: { slidesPerView: 3 },
+                  1020: { slidesPerView: 4 },
+                  1200: { slidesPerView: 5 },
+                  1600: { slidesPerView: 6 },
+                }}
               >
-                View Collection
-              </Link>
+                {loading
+                  ? new Array(10).fill(0).map((_, index) => (
+                      <SwiperSlide key={index}>
+                        <RecommendedItemSkeleton />
+                      </SwiperSlide>
+                    ))
+                  : filteredItems.slice(0, 10).map((recommendedItemInfo, index) => (
+                      <SwiperSlide key={index}>
+                        <Link to={`/item/${recommendedItemInfo.itemId}`} className="item">
+                          <figure className="item__img__wrapper">
+                            <img src={recommendedItemInfo.imageLink} alt="" className="item__img" />
+                          </figure>
+
+                          <div className="item__details">
+                            <span className="item__details__name">{recommendedItemInfo.title}</span>
+                            <span className="item__details__price">
+                              {recommendedItemInfo.price} ETH
+                            </span>
+                            <span className="item__details__last-sale">
+                              Last sale: {recommendedItemInfo.lastSale} ETH
+                            </span>
+                          </div>
+
+                          <div className="item__see-more">
+                            <button className="item__see-more__button">See More</button>
+                            <div className="item__see-more__icon">
+                              <FontAwesomeIcon icon={faShoppingBag} />
+                            </div>
+                          </div>
+                        </Link>
+                      </SwiperSlide>
+                    ))}
+              </Swiper>
             </div>
+
+            {loading ? (
+              <RecommendedFooterSkeleton />
+            ) : (
+              <div className="recommended-items__footer">
+                <Link
+                  to={`/collection/${collectionId}`}
+                  className="recommended-items__footer__button"
+                >
+                  View Collection
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

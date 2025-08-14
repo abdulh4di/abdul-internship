@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CollectionContext } from "../../context/CollectionContext";
 import CollectionInfoSkeleton from "../ui/CollectionInfoSkeleton";
 
-export default function CollectionInfo() {
+export default function   CollectionInfo() {
   const { loading, collectionInfo } = useContext(CollectionContext);
 
   return (
