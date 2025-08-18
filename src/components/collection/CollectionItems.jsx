@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CollectionContext } from "../../context/CollectionContext";
-import CollectionItemsSkeletonHeader from "../ui/CollectionItemsSkeletonHeader";
-import CollectionItemsSkeletonBody from "../ui/CollectionItemsSkeletonBody";
+import CollectionItemsSkeletonHeader from "../ui/CollectionItemsSkeleton/CollectionItemsSkeletonHeader";
+import CollectionItemsSkeletonBody from "../ui/CollectionItemsSkeleton/CollectionItemsSkeletonBody";
 
 export default function CollectionItems() {
   const { loading, collectionInfo, collectionItemsInfo } = useContext(CollectionContext);

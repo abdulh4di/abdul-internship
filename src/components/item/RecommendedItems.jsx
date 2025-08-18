@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation } from "swiper/modules";
-import RecommendedIHeaderSkeleton from "../ui/RecommendedIHeaderSkeleton";
-import RecommendedItemSkeleton from "../ui/RecommendedItemSkeleton";
-import RecommendedFooterSkeleton from "../ui/RecommendedFooterSkeleton";
+import RecommendedIHeaderSkeleton from "../ui/RecommendedSkeleton/RecommendedIHeaderSkeleton";
+import RecommendedItemSkeleton from "../ui/RecommendedSkeleton/RecommendedItemSkeleton";
+import RecommendedFooterSkeleton from "../ui/RecommendedSkeleton/RecommendedFooterSkeleton";
 
 export default function RecommendedItems({ collectionId, currentItemId }) {
   const [recommendedItemsInfo, setRecommendedItemsInfo] = useState([]);
