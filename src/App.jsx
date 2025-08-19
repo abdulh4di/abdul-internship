@@ -9,6 +9,8 @@ import UserPage from "./pages/UserPage";
 import { AppContext } from "./context/AppContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function App() {
   const [trendingNFTs, setTrendingNFTs] = useState([]);
@@ -69,6 +71,7 @@ function App() {
     fetchNewCollections();
     fetchPopularCollections();
     fetchCollections();
+    AOS.init()
   }, []);
 
   return (

@@ -13,9 +13,21 @@ export default function PopularCollections() {
     <section id="popular-collections">
       <div className="container">
         <div className="row">
-          <h2 className="popular-collections__title">Popular Collections</h2>
+          <h2
+            className="popular-collections__title"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="50"
+          >
+            Popular Collections
+          </h2>
 
-          <div className="popular-collections__body">
+          <div
+            className="popular-collections__body"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="100"
+          >
             <Swiper
               spaceBetween={16}
               loop
