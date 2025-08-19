@@ -28,13 +28,13 @@ const ItemsSkeleton = () => {
           </div>
           <div className="item-page__details">
             <div className="item-page__detail">
-              <div className="skeleton skeleton-item-page__detial"></div>
+              <div className="skeleton skeleton-item-page__detail"></div>
             </div>
             <div className="item-page__detail">
-              <div className="skeleton skeleton-item-page__detial"></div>
+              <div className="skeleton skeleton-item-page__detail"></div>
             </div>
             <div className="item-page__detail">
-              <div className="skeleton skeleton-item-page__detial"></div>
+              <div className="skeleton skeleton-item-page__detail"></div>
             </div>
           </div>
           <div className="item-page__sale">
@@ -57,7 +57,7 @@ const ItemsSkeleton = () => {
               </div>
 
               <div className="item-page__sale__buttons">
-                <div className="skeleton skeleton-item-page__sale__buttonns"></div>
+                <div className="skeleton skeleton-item-page__sale__buttons"></div>
               </div>
             </div>
           </div>

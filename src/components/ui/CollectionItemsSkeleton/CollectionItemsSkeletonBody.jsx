@@ -6,7 +6,7 @@ const CollectionItemsSkeletonBody = () => {
       <div className="item-column">
         <div className="item">
           <div className="item__img__wrapper">
-            <div className="skeleton skeletom-item__img"></div>
+            <div className="skeleton skeleton-item__img"></div>
           </div>
           <div className="item__details">
             <div className="item__details__name">
