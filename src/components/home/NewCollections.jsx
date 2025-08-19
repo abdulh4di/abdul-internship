@@ -14,9 +14,16 @@ export default function NewCollections() {
     <section id="new-collections">
       <div className="container">
         <div className="row">
-          <h2 className="new-collections__title">New Collections</h2>
+          <h2 className="new-collections__title" data-aos="fade-up" data-aos-duration="700">
+            New Collections
+          </h2>
 
-          <div className="new-collections__body">
+          <div
+            className="new-collections__body"
+            data-aos="fade-up"
+            data-aos-duration="700"
+            data-aos-delay="100"
+          >
             <Swiper
               className="swiper-slide"
               spaceBetween={16}
